@@ -5,9 +5,15 @@ interface IButton {
   children: string;
   disabled?: boolean;
   onClick: () => void;
+  outline?: boolean;
 }
 
-const Button: React.FC<IButton> = ({children, disabled = false, onClick}) => {
+const Button: React.FC<IButton> = ({
+  children,
+  disabled = false,
+  onClick,
+  outline = false,
+}) => {
   const handleClick = (): void => {
     if (disabled) {
       return;
@@ -15,23 +21,36 @@ const Button: React.FC<IButton> = ({children, disabled = false, onClick}) => {
     onClick();
   };
   return (
-    <ButtonContent onPress={handleClick} disabled={disabled}>
-      <ButtonText>{children}</ButtonText>
+    <ButtonContent onPress={handleClick} disabled={disabled} outline={outline}>
+      <ButtonText outline={outline}>{children}</ButtonText>
     </ButtonContent>
   );
 };
 
-const ButtonContent = styled.TouchableOpacity`
+type ButtonContentType = {
+  disabled: boolean;
+  outline: boolean;
+};
+
+const ButtonContent = styled.TouchableOpacity<ButtonContentType>`
+  margin: 5px 0;
   padding: 14px;
   border-radius: 32px;
+  border-width: 2px;
+  border-color: ${({outline}) => (outline ? '#10c17d' : '#ffffff')};
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background: ${props => (props.disabled ? '#cccccc' : '#10c17d')};
+  background: ${({outline, disabled}) =>
+    outline ? '#ffffff' : disabled ? '#cccccc' : '#10c17d'};
 `;
 
-const ButtonText = styled.Text`
-  color: #fff;
+type ButtonTextType = {
+  outline: boolean;
+};
+
+const ButtonText = styled.Text<ButtonTextType>`
+  color: ${({outline}) => (outline ? '#10c17d' : '#ffffff')};
   font-style: normal;
   font-weight: 600;
   font-size: 18px;

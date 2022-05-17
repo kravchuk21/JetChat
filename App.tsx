@@ -93,7 +93,13 @@ const App: React.FC = () => {
             lastMessageDate="12.35"
             unreadMessages={0}
           />
-          <Button onClick={() => Alert.alert('Hello World!!!')}>Hello</Button>
+          <Button onClick={() => Alert.alert('Button')}>Button</Button>
+          <Button onClick={() => Alert.alert('Outline Button')} outline>
+            Outline Button
+          </Button>
+          <Button onClick={() => Alert.alert('Disable Button')} disabled>
+            Disable Button
+          </Button>
         </Content>
       </ScrollView>
     </SafeAreaView>
