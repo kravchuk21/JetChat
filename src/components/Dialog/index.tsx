@@ -38,7 +38,7 @@ const Dialog: React.FC<IDialog> = ({
       <DialogInfoBlock>
         <LastMessageDate>{lastMessageDate}</LastMessageDate>
         {unreadMessages >= 1 && (
-          <UnreadMessageCount colors={['#10C17D', '#01F094']}>
+          <UnreadMessageCount colors={['#01F094', '#10C17D']}>
             <UnreadMessageCountText>{unreadMessages}</UnreadMessageCountText>
           </UnreadMessageCount>
         )}
