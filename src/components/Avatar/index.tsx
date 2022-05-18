@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import generateAvatarFromHash from '../../utils/helpers/generateAvatarFromHash';
 import LinearGradient from 'react-native-linear-gradient';
 
-interface IAvatar {
+export interface IAvatar {
   fullName: string;
   avatar: string | null;
 }

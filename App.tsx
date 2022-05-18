@@ -1,113 +1,29 @@
 import React from 'react';
-import {Alert, SafeAreaView, ScrollView} from 'react-native';
-import styled from 'styled-components/native';
-import Button from './src/components/Button';
-import Dialog from './src/components/Dialog';
+import {NavigationContainer} from '@react-navigation/native';
+import Screen1 from './src/screens/Screen1';
+import Screen2 from './src/screens/Screen2';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+export type RootStackParamList = {
+  Screen1: undefined;
+  Screen2: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App: React.FC = () => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Content>
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar={null}
-            lastMessageText={'Hello world 👋'}
-            lastMessageDate="12.45"
-            unreadMessages={12}
-          />
-          <Dialog
-            dialogName="Vladislav Kravchuk"
-            avatar="https://images.unsplash.com/photo-1652669253736-1e815c884373?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-            lastMessageText={"Hay🐶. What's up"}
-            lastMessageDate="12.35"
-            unreadMessages={0}
-          />
-          <Button onClick={() => Alert.alert('Button')}>Button</Button>
-          <Button onClick={() => Alert.alert('Outline Button')} outline>
-            Outline Button
-          </Button>
-          <Button onClick={() => Alert.alert('Disable Button')} disabled>
-            Disable Button
-          </Button>
-        </Content>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName="Screen1">
+        <Stack.Screen name="Screen1" component={Screen1} />
+        <Stack.Screen name="Screen2" component={Screen2} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const Content = styled.View`
-  padding: 20px;
-`;
 
 export default App;
