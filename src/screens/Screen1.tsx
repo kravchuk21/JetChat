@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from '../components/Dialog';
 import Button from '../components/Button';
-import {Alert, ScrollView} from 'react-native';
+import { Alert, ScrollView, Text } from "react-native";
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
@@ -13,7 +13,7 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
   return (
     <Screen>
       <ScrollView>
-        <Header title="Screen1" />
+        <Header title="Screen1" rightElements={<Text>Hello</Text>} />
         <Content>
           <Dialog
             dialogName="Vladislav Kravchuk"

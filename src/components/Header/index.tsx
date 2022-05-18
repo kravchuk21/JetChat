@@ -9,9 +9,15 @@ interface IHeader {
   title: string;
   goBack?: boolean;
   avatar?: IAvatar | null;
+  rightElements?: React.ReactNode | null;
 }
 
-const Header: React.FC<IHeader> = ({title, goBack = false, avatar = null}) => {
+const Header: React.FC<IHeader> = ({
+  title,
+  goBack = false,
+  avatar = null,
+  rightElements = null,
+}) => {
   return (
     <HeaderBlock>
       {goBack && <GoBack />}
@@ -21,6 +27,7 @@ const Header: React.FC<IHeader> = ({title, goBack = false, avatar = null}) => {
         </View>
       )}
       <HeaderTitle>{title}</HeaderTitle>
+      {rightElements !== null && rightElements}
     </HeaderBlock>
   );
 };
@@ -51,6 +58,7 @@ const HeaderTitle = styled.Text`
   font-weight: 600;
   font-size: 22px;
   color: #09101d;
+  flex: 1;
 `;
 
 export default Header;
