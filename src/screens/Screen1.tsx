@@ -1,11 +1,13 @@
 import React from 'react';
 import Dialog from '../components/Dialog';
 import Button from '../components/Button';
-import { Alert, ScrollView, Text } from "react-native";
+import {Alert, ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
 import {Content, Screen} from '../../styled';
+import IconButton from '../components/IconButton';
+import GoBackSvgIcon from '../assetc/svg/GoBackSvgIcon';
 
 type Screen1NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
@@ -13,7 +15,16 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
   return (
     <Screen>
       <ScrollView>
-        <Header title="Screen1" rightElements={<Text>Hello</Text>} />
+        <Header
+          title="Screen1"
+          rightElements={
+            <IconButton
+              size="small"
+              onClick={() => Alert.alert('Right Element Icon Button')}>
+              <GoBackSvgIcon />
+            </IconButton>
+          }
+        />
         <Content>
           <Dialog
             dialogName="Vladislav Kravchuk"
@@ -52,6 +63,14 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
           <Button onClick={() => Alert.alert('Disable Button')} disabled>
             Disable Button
           </Button>
+          <IconButton
+            onClick={() => Alert.alert('Small Icon Button')}
+            size="small">
+            <GoBackSvgIcon />
+          </IconButton>
+          <IconButton onClick={() => Alert.alert('Icon Button')}>
+            <GoBackSvgIcon />
+          </IconButton>
         </Content>
       </ScrollView>
     </Screen>
