@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import LinearGradient from 'react-native-linear-gradient';
 
 export const DialogBlock = styled.TouchableOpacity`
   flex-direction: row;
@@ -39,18 +38,15 @@ export const LastMessageDate = styled.Text`
   margin-bottom: 5px;
 `;
 
-export const UnreadMessageCount = styled(LinearGradient)`
+export const UnreadMessageCount = styled.Text`
   width: 25px;
   height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 20px;
-`;
-
-export const UnreadMessageCountText = styled.Text`
+  background-color: #10c17d;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 25px;
+  text-align: center;
   color: #fff;
 `;

@@ -8,7 +8,6 @@ import {
   LastMessageDate,
   LastMessageText,
   UnreadMessageCount,
-  UnreadMessageCountText,
 } from './styled';
 
 interface IDialog {
@@ -38,9 +37,7 @@ const Dialog: React.FC<IDialog> = ({
       <DialogInfoBlock>
         <LastMessageDate>{lastMessageDate}</LastMessageDate>
         {unreadMessages >= 1 && (
-          <UnreadMessageCount colors={['#01F094', '#10C17D']}>
-            <UnreadMessageCountText>{unreadMessages}</UnreadMessageCountText>
-          </UnreadMessageCount>
+          <UnreadMessageCount>{unreadMessages}</UnreadMessageCount>
         )}
       </DialogInfoBlock>
     </DialogBlock>
