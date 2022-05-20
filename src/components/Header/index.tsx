@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Avatar, {IAvatar} from '../Avatar';
-import GoBackSvgIcon from '../../assetc/svg/GoBackSvgIcon';
+import GoBackSvgIcon from '../../assets/svg/GoBackSvgIcon';
 
 interface IHeader {
   title: string;
