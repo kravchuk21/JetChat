@@ -7,7 +7,8 @@ import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
-import GoBackSvgIcon from '../assetc/svg/GoBackSvgIcon';
+import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
+import Bubble from '../components/Bubble';
 
 type Screen1NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
@@ -71,6 +72,19 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
           <IconButton onClick={() => Alert.alert('Icon Button')}>
             <GoBackSvgIcon />
           </IconButton>
+          <Bubble
+            fullName="Roman Dusko"
+            avatar={null}
+            text="Hello world"
+            date="12:34"
+          />
+          <Bubble
+            isMe
+            fullName="Roman Dusko"
+            avatar={null}
+            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, nam nihil quod repellendus sunt voluptas! Blanditiis dignissimos enim facere fugiat harum id inventore minus officia, perferendis porro praesentium, quia quidem!"
+            date="12:34"
+          />
         </Content>
       </ScrollView>
     </Screen>

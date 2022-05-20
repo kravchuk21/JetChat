@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import {Alert, ScrollView} from 'react-native';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
-import GoBackSvgIcon from '../assetc/svg/GoBackSvgIcon';
+import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
 
 type Screen2NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
