@@ -4,7 +4,7 @@ export const InputBlock = styled.View<{focus: boolean; error: boolean}>`
   border-radius: 32px;
   border-width: 2px;
   border-color: ${props =>
-    props.focus ? '#10c17d' : props.error ? 'red' : '#cccccc'};
+    props.error ? 'red' : props.focus ? '#10c17d' : '#cccccc'};
   padding: 0 20px;
   flex-direction: row;
   align-items: center;
