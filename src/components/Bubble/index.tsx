@@ -19,12 +19,12 @@ const Bubble: React.FC<IBubble> = ({
 }) => {
   return (
     <BubbleBlock isMe={isMe}>
-      {isMe ? null : <Avatar fullName={fullName} avatar={avatar} />}
+      {isMe ? null : <Avatar fullName={fullName} avatar={avatar} size={30} />}
       <BubbleInfo isMe={isMe}>
         <BubbleText>{text}</BubbleText>
         <MessageDate isMe={isMe}>{date}</MessageDate>
       </BubbleInfo>
-      {isMe ? <Avatar fullName={fullName} avatar={avatar} /> : null}
+      {isMe ? <Avatar fullName={fullName} avatar={avatar} size={30} /> : null}
     </BubbleBlock>
   );
 };
@@ -45,7 +45,7 @@ const BubbleInfo = styled.View<BubbleStyleProps>`
   padding: 10px 15px;
   border-radius: 10px;
   ${props => (props.isMe ? 'margin-right' : 'margin-left')}: 10px;
-  max-width: 70%;
+  flex: 0.8;
 `;
 
 const BubbleText = styled.Text`
