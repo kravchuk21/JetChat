@@ -24,7 +24,7 @@ const App: React.FC = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="VerificationEmail">
+        initialRouteName="Screen1">
         <Stack.Group>
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Login" component={Login} />

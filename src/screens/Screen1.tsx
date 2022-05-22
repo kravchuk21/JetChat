@@ -9,6 +9,7 @@ import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
 import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
 import Bubble from '../components/Bubble';
+import Toast from '../components/Toast';
 
 type Screen1NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
@@ -85,6 +86,13 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
             text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, nam nihil quod repellendus sunt voluptas! Blanditiis dignissimos enim facere fugiat harum id inventore minus officia, perferendis porro praesentium, quia quidem!"
             date="12:34"
           />
+
+          <Toast
+            type="error"
+            text="Что-то пошло не так 🤨"
+            title="OOOpppsss..."
+          />
+          <Toast type="success" text="Что-то пошло не так 🤨" />
         </Content>
       </ScrollView>
     </Screen>
