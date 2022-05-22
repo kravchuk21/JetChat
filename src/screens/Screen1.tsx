@@ -9,7 +9,6 @@ import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
 import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
 import Bubble from '../components/Bubble';
-import Avatar from '../components/Avatar';
 
 type Screen1NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
