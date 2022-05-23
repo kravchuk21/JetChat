@@ -3,14 +3,24 @@ import Button from '../components/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
-import {Alert, ScrollView} from 'react-native';
+import {Alert, ScrollView, Text} from 'react-native';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
 import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  selectCount,
+} from '../store/slices/auth';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
 
 type Screen2NavigationProps = NativeStackScreenProps<RootStackParamList>;
 
 const Screen2: React.FC<Screen2NavigationProps> = ({navigation}) => {
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
+
   return (
     <Screen>
       <ScrollView>
@@ -31,6 +41,18 @@ const Screen2: React.FC<Screen2NavigationProps> = ({navigation}) => {
           }
         />
         <Content>
+          <Text>{count}</Text>
+          <Button onClick={() => dispatch(increment())} outline>
+            +
+          </Button>
+          <Button
+            onClick={() => dispatch(incrementByAmount({count: 2}))}
+            outline>
+            +2
+          </Button>
+          <Button onClick={() => dispatch(decrement())} outline>
+            -
+          </Button>
           <Button onClick={() => navigation.navigate('Screen1')}>
             Screen1
           </Button>

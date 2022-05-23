@@ -6,6 +6,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Register from './src/screens/Auth/Register';
 import Login from './src/screens/Auth/Login';
 import VerificationEmail from './src/screens/Auth/VerificationEmail';
+import {store} from './src/store/store';
+import {Provider} from 'react-redux';
 
 export type RootStackParamList = {
   Screen1: undefined;
@@ -20,22 +22,24 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName="Screen1">
-        <Stack.Group>
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen
-            name="VerificationEmail"
-            component={VerificationEmail}
-          />
-        </Stack.Group>
-        <Stack.Screen name="Screen1" component={Screen1} />
-        <Stack.Screen name="Screen2" component={Screen2} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName="Screen1">
+          <Stack.Group>
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen
+              name="VerificationEmail"
+              component={VerificationEmail}
+            />
+          </Stack.Group>
+          <Stack.Screen name="Screen1" component={Screen1} />
+          <Stack.Screen name="Screen2" component={Screen2} />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 };
