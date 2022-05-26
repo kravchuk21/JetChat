@@ -3,17 +3,24 @@ import Dialog from '../components/Dialog';
 import Button from '../components/Button';
 import {Alert, ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
 import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
 import Bubble from '../components/Bubble';
-import Toast from '../components/Toast';
+import {HomeNavigationParamList} from '../navigation/HomeNavigation';
+import {useAppDispatch} from '../store/hooks';
+import {logOutAction} from '../store/auth/actions';
 
-type Screen1NavigationProps = NativeStackScreenProps<RootStackParamList>;
+type Screen1NavigationProps = NativeStackScreenProps<HomeNavigationParamList>;
 
 const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
+  const dispatch = useAppDispatch();
+
+  const logOut = () => {
+    dispatch(logOutAction.request({}));
+  };
+
   return (
     <Screen>
       <ScrollView>
@@ -59,8 +66,8 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
           <Button onClick={() => navigation.navigate('Screen2')}>
             Screen 2
           </Button>
-          <Button onClick={() => Alert.alert('Outline Button')} outline>
-            Outline Button
+          <Button onClick={logOut} outline>
+            Log Out
           </Button>
           <Button onClick={() => Alert.alert('Disable Button')} disabled>
             Disable Button
@@ -86,13 +93,6 @@ const Screen1: React.FC<Screen1NavigationProps> = ({navigation}) => {
             text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, nam nihil quod repellendus sunt voluptas! Blanditiis dignissimos enim facere fugiat harum id inventore minus officia, perferendis porro praesentium, quia quidem!"
             date="12:34"
           />
-
-          <Toast
-            type="error"
-            text="Что-то пошло не так 🤨"
-            title="OOOpppsss..."
-          />
-          <Toast type="success" text="Что-то пошло не так 🤨" />
         </Content>
       </ScrollView>
     </Screen>

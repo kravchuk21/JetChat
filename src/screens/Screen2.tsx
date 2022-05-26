@@ -1,14 +1,14 @@
 import React from 'react';
 import Button from '../components/Button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
 import Header from '../components/Header';
 import {Alert, ScrollView} from 'react-native';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
 import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
+import {HomeNavigationParamList} from '../navigation/HomeNavigation';
 
-type Screen2NavigationProps = NativeStackScreenProps<RootStackParamList>;
+type Screen2NavigationProps = NativeStackScreenProps<HomeNavigationParamList>;
 
 const Screen2: React.FC<Screen2NavigationProps> = ({navigation}) => {
   return (

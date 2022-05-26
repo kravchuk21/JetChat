@@ -4,6 +4,6 @@ import {loginValidationSchema} from './loginValidationSchema';
 export const registerValidationSchema = loginValidationSchema.shape({
   fullName: yup
     .string()
-    .matches(/[\w\s.]+/, 'Введите не фамилию и имя')
+    .matches(/^([\w]{2,})+\s+([\w\s]{2,})+$/i, 'Введите фамилию и имя')
     .required('Укажите полное имя'),
 });

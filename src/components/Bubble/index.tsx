@@ -24,7 +24,6 @@ const Bubble: React.FC<IBubble> = ({
         <BubbleText>{text}</BubbleText>
         <MessageDate isMe={isMe}>{date}</MessageDate>
       </BubbleInfo>
-      {isMe ? <Avatar fullName={fullName} avatar={avatar} size={30} /> : null}
     </BubbleBlock>
   );
 };
