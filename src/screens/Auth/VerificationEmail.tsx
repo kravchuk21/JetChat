@@ -1,7 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../App';
 import {Screen} from '../../../styled';
 import AuthBlock from '../../components/AuthBlock';
 import Button from '../../components/Button';
@@ -11,9 +10,12 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import {AuthNavigationParamList} from '../../navigation/AuthNavigation';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
+import {activateEmailAction} from '../../store/auth/actions';
 
 type VerificationEmailNavigationProps =
-  NativeStackScreenProps<RootStackParamList>;
+  NativeStackScreenProps<AuthNavigationParamList>;
 
 const CELL_COUNT = 4;
 
@@ -41,6 +43,8 @@ const styles = StyleSheet.create({
 const VerificationEmail: React.FC<VerificationEmailNavigationProps> = ({
   navigation,
 }) => {
+  const dispatch = useAppDispatch();
+  const email = useAppSelector(state => state.auth.email);
   const [value, setValue] = React.useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -50,6 +54,14 @@ const VerificationEmail: React.FC<VerificationEmailNavigationProps> = ({
 
   const handleClickOnLogin = (): void => {
     navigation.navigate('Login');
+  };
+
+  const handleClickSubmit = () => {
+    if (email) {
+      dispatch(
+        activateEmailAction.request({email: email, activationCode: value}),
+      );
+    }
   };
 
   return (
@@ -77,7 +89,7 @@ const VerificationEmail: React.FC<VerificationEmailNavigationProps> = ({
             )}
           />
           <Button
-            onClick={handleClickOnLogin}
+            onClick={handleClickSubmit}
             disabled={!(value.length === CELL_COUNT)}>
             Подтвердить Email
           </Button>
