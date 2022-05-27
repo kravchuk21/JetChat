@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Formik, Field} from 'formik';
 import {Screen} from '../../../styled';
@@ -25,13 +25,9 @@ const Register: React.FC<RegisterNavigationProps> = ({navigation}) => {
 
   const handleClickSubmit = (values: RegistrationData) => {
     if (values) {
-      try {
-        dispatch(registerAction.request(values));
-        if (isLoading !== LoadingEnum.ERROR && isAuth !== null) {
-          navigation.navigate('Login');
-        }
-      } catch (err) {
-        console.log(err);
+      dispatch(registerAction.request(values));
+      if (isLoading === LoadingEnum.LOADED && !isAuth) {
+        navigation.navigate('Login');
       }
     }
   };
@@ -65,7 +61,9 @@ const Register: React.FC<RegisterNavigationProps> = ({navigation}) => {
                   placeholder="Пароль"
                   secureTextEntry
                 />
-
+                {isLoading === LoadingEnum.LOADING ? (
+                  <Text>{isLoading}</Text>
+                ) : null}
                 <Button
                   onClick={handleSubmit}
                   disabled={!isValid || values.email === ''}>

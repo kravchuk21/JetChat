@@ -21,15 +21,15 @@ export const authReducer = createReducer(initialState, builder => {
   builder.addCase(signInAction.request, state => {
     state.isLoading = LoadingEnum.LOADING;
   });
-  builder.addCase(signInAction.success, (state, {payload}) => {
-    state.id = payload.user.id;
-    state.email = payload.user.email;
-    state.isActivated = payload.user.isActivated;
+  builder.addCase(signInAction.success, (state, {payload: {data}}) => {
+    state.id = data.user.id;
+    state.email = data.user.email;
+    state.isActivated = data.user.isActivated;
     state.isAuth = true;
     state.isLoading = LoadingEnum.LOADED;
   });
   builder.addCase(signInAction.failure, state => {
-    state.isAuth = true;
+    state.isAuth = false;
     state.isLoading = LoadingEnum.ERROR;
   });
   builder.addCase(registerAction.request, state => ({
@@ -78,10 +78,10 @@ export const authReducer = createReducer(initialState, builder => {
   builder.addCase(checkAuthAction.request, state => {
     state.isLoading = LoadingEnum.LOADING;
   });
-  builder.addCase(checkAuthAction.success, (state, {payload}) => {
-    state.id = payload.user.id;
-    state.email = payload.user.email;
-    state.isActivated = payload.user.isActivated;
+  builder.addCase(checkAuthAction.success, (state, {payload: {data}}) => {
+    state.id = data.user.id;
+    state.email = data.user.email;
+    state.isActivated = data.user.isActivated;
     state.isAuth = true;
     state.isLoading = LoadingEnum.LOADED;
   });

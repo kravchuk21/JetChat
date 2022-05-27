@@ -4,7 +4,7 @@ import {AuthResponseData} from './authApi/types';
 import {API_URL} from '@env';
 
 const Axios = axios.create({
-  baseURL: API_URL || 'http://192.168.70.197:5000/api',
+  baseURL: API_URL || 'http://192.168.198.197:5000/api',
   withCredentials: true,
 });
 
@@ -28,7 +28,7 @@ Axios.interceptors.response.use(
         const response = await axios.get<AuthResponseData>('/refresh', {
           withCredentials: true,
         });
-        await AsyncStorage.setItem('token', response.data.accessToken);
+        await AsyncStorage.setItem('token', response.data.data.accessToken);
         return Axios.request(originalRequest);
       } catch (e) {
         console.log('НЕ АВТОРИЗОВАН');

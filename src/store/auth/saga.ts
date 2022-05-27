@@ -14,8 +14,9 @@ import {ShowToast} from '../../utils/helpers/TostMessage';
 function* signInWorker({payload}: ReturnType<typeof signInAction['request']>) {
   try {
     const response: AuthResponseData = yield AuthApi.login(payload);
-    yield AsyncStorage.setItem('token', response.accessToken);
+    yield AsyncStorage.setItem('token', response.data.accessToken);
     yield put(signInAction.success(response));
+    ShowToast({type: 'success', text1: 'Вход', text2: response.message});
   } catch (e: any) {
     yield put(signInAction.failure({}));
     ShowToast({text1: 'Ошибка входа', text2: e.response.data.message});
@@ -27,11 +28,14 @@ function* registerWorker({
 }: ReturnType<typeof registerAction['request']>) {
   try {
     const response: AuthResponseData = yield AuthApi.register(payload);
-    yield AsyncStorage.setItem('token', response.accessToken);
-    console.log('sucess');
+    yield AsyncStorage.setItem('token', response.data.accessToken);
     yield put(registerAction.success({}));
+    ShowToast({
+      type: 'success',
+      text1: 'Регистрация',
+      text2: response.message,
+    });
   } catch (e: any) {
-    console.log('error');
     yield put(registerAction.failure({}));
     ShowToast({text1: 'Ошибка регистрации', text2: e.response.data.message});
   }
@@ -39,9 +43,10 @@ function* registerWorker({
 
 function* logOutWorker() {
   try {
-    yield AuthApi.logout();
+    const response: AuthResponseData = yield AuthApi.logout();
     yield AsyncStorage.removeItem('token');
     yield put(logOutAction.success({}));
+    ShowToast({type: 'success', text1: 'Выход', text2: response.message});
   } catch (e: any) {
     yield put(logOutAction.failure({}));
     ShowToast({text1: 'Ошибка выхода', text2: e.response.data.message});
@@ -52,9 +57,9 @@ function* activateEmailWorker({
   payload,
 }: ReturnType<typeof activateEmailAction['request']>) {
   try {
-    yield AuthApi.activateEmail(payload);
+    const response: AuthResponseData = yield AuthApi.activateEmail(payload);
     yield put(activateEmailAction.success({}));
-    console.log('S');
+    ShowToast({type: 'success', text1: 'Выход', text2: response.message});
   } catch (e: any) {
     yield put(activateEmailAction.failure({}));
     ShowToast({text1: 'Ошибка активации', text2: e.response.data.message});
@@ -64,11 +69,10 @@ function* activateEmailWorker({
 function* checkAuthWorker() {
   try {
     const response: AuthResponseData = yield AuthApi.refresh();
-    yield AsyncStorage.setItem('token', response.accessToken);
+    yield AsyncStorage.setItem('token', response.data.accessToken);
     yield put(checkAuthAction.success(response));
   } catch (e: any) {
     yield put(checkAuthAction.failure({}));
-    ShowToast({text1: 'Ошибка', text2: e.response.data.message});
   }
 }
 

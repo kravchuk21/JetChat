@@ -8,13 +8,16 @@ export type RegistrationData = LoginData & {
 };
 
 export type AuthResponseData = {
-  accessToken: string;
-  refreshToken: string;
-  user: {
-    email: string;
-    id: string;
-    isActivated: boolean;
+  data: {
+    accessToken: string;
+    refreshToken: string;
+    user: {
+      email: string;
+      id: string;
+      isActivated: boolean;
+    };
   };
+  message: string;
 };
 
 export type ActivateEmailData = {

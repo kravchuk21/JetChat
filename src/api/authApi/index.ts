@@ -17,10 +17,10 @@ export const AuthApi = {
       return res.data;
     });
   },
-  activateEmail: (data: ActivateEmailData) => {
+  activateEmail: (data: ActivateEmailData): Promise<AuthResponseData> => {
     return Axios.post('/activate', data).then(res => res.data);
   },
-  logout: (): Promise<any> => {
+  logout: (): Promise<AuthResponseData> => {
     return Axios.post('/logout').then(res => {
       return res.data;
     });

@@ -27,11 +27,7 @@ const Login: React.FC<LoginNavigationProps> = ({navigation}) => {
   const handleClickSubmit = (values: LoginData) => {
     if (values) {
       dispatch(signInAction.request(values));
-      console.log('isAuth', isAuth);
-      console.log('isActivated', isActivated);
-      console.log('isLoading', isLoading);
       if (isLoading === LoadingEnum.LOADED && !isActivated && isAuth) {
-        console.log('VerificationEmail');
         navigation.navigate('VerificationEmail');
       }
     }
