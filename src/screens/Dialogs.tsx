@@ -1,22 +1,26 @@
 import React from 'react';
 import Dialog from '../components/Dialog';
-import {Alert, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import Header from '../components/Header';
 import {Content, Screen} from '../../styled';
 import IconButton from '../components/IconButton';
-import GoBackSvgIcon from '../assets/svg/GoBackSvgIcon';
+import SettingsSvgIcon from '../assets/svg/SettingsSvgIcon';
+import {useNavigation} from '@react-navigation/native';
+import {useNavigationType} from '../navigation/HomeNavigation';
 
 const Dialogs: React.FC = () => {
+  const navigation = useNavigation<useNavigationType>();
+
   return (
     <Screen>
       <ScrollView>
         <Header
-          title="Dialogs"
+          title="JET чат"
           rightElements={
             <IconButton
               size="small"
-              onClick={() => Alert.alert('Right Element Icon Button')}>
-              <GoBackSvgIcon />
+              onClick={() => navigation.navigate('Settings')}>
+              <SettingsSvgIcon />
             </IconButton>
           }
         />

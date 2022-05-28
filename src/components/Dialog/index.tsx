@@ -10,6 +10,8 @@ import {
   UnreadMessageCount,
 } from './styled';
 import {Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useNavigationType} from '../../navigation/HomeNavigation';
 
 interface IDialog {
   _id: string;
@@ -28,8 +30,16 @@ const Dialog: React.FC<IDialog> = ({
   unreadMessages,
   avatar,
 }) => {
+  const navigation = useNavigation<useNavigationType>();
+
+  const handleSelectDialog = () => {
+    navigation.navigate('Dialog');
+  };
+
   return (
-    <DialogBlock onLongPress={() => Alert.alert('long press')}>
+    <DialogBlock
+      onPress={handleSelectDialog}
+      onLongPress={() => Alert.alert('long press')}>
       <Avatar fullName="Vladislav Kravchuk" avatar={avatar} />
       <DialogContentBlock>
         <DialogName>{dialogName}</DialogName>
