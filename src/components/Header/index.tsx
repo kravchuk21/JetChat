@@ -23,7 +23,11 @@ const Header: React.FC<IHeader> = ({
       {goBack && <GoBack />}
       {avatar !== null && (
         <View style={{marginRight: 15}}>
-          <Avatar fullName={avatar.fullName} avatar={avatar?.avatar} />
+          <Avatar
+            size={35}
+            fullName={avatar.fullName}
+            avatar={avatar?.avatar}
+          />
         </View>
       )}
       <HeaderTitle>{title}</HeaderTitle>

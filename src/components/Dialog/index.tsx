@@ -9,8 +9,10 @@ import {
   LastMessageText,
   UnreadMessageCount,
 } from './styled';
+import {Alert} from 'react-native';
 
 interface IDialog {
+  _id: string;
   dialogName: string;
   lastMessageText: string;
   lastMessageDate: string;
@@ -19,6 +21,7 @@ interface IDialog {
 }
 
 const Dialog: React.FC<IDialog> = ({
+  _id,
   dialogName,
   lastMessageDate,
   lastMessageText,
@@ -26,7 +29,7 @@ const Dialog: React.FC<IDialog> = ({
   avatar,
 }) => {
   return (
-    <DialogBlock>
+    <DialogBlock onLongPress={() => Alert.alert('long press')}>
       <Avatar fullName="Vladislav Kravchuk" avatar={avatar} />
       <DialogContentBlock>
         <DialogName>{dialogName}</DialogName>
