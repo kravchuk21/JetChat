@@ -3,9 +3,6 @@ import Register from '../screens/Auth/Register';
 import Login from '../screens/Auth/Login';
 import VerificationEmail from '../screens/Auth/VerificationEmail';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { useAppSelector } from "../store/hooks";
-import { LoadingEnum } from "../store/types";
-import { Text } from 'react-native';
 
 export type AuthNavigationParamList = {
   Register: undefined;
